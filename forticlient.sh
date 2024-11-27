@@ -1,8 +1,15 @@
 #!/usr/bin/bash
 
-# Function to install FortiClient on Debian
+# Banner Name
+echo "########################################"
+echo "#       Astra Forticlient Installer    #"
+echo "########################################"
 
+# Function to install FortiClient on Debian
 install_forticlient_debian() {
+    echo "==========================="
+    echo "Installing FortiClient on Debian"
+    echo "==========================="
     echo "Adding Debian repository..."
     echo "deb http://ftp.debian.org/debian stable main contrib non-free" | sudo tee -a /etc/apt/sources.list
 
@@ -25,12 +32,16 @@ install_forticlient_debian() {
     echo "Fixing missing dependencies..."
     sudo apt --fix-broken install -y
 
-    echo "FortiClient installed on Debian successfully!"
+    echo "==========================="
+    echo "FortiClient successfully installed on Debian!"
+    echo "==========================="
 }
 
 # Function to install FortiClient on Ubuntu
-
 install_forticlient_ubuntu() {
+    echo "==========================="
+    echo "Installing FortiClient on Ubuntu"
+    echo "==========================="
     echo "Adding Fortinet repository for Ubuntu..."
     wget -O - https://repo.fortinet.com/repo/forticlient/7.4/ubuntu22/DEB-GPG-KEY | gpg --dearmor | sudo tee /usr/share/keyrings/repo.fortinet.com.gpg
 
@@ -46,11 +57,15 @@ install_forticlient_ubuntu() {
     echo "Installing FortiClient..."
     sudo apt install forticlient -y
 
-    echo "FortiClient installed on Ubuntu successfully!"
+    echo "==========================="
+    echo "FortiClient successfully installed on Ubuntu!"
+    echo "==========================="
 }
 
 # Main script starts here
-echo "Choose the option:"
+echo "Welcome to Astra Forticlient Installer!"
+echo "---------------------------------------"
+echo "Choose an option to proceed:"
 echo "1. Install FortiClient on Debian"
 echo "2. Install FortiClient on Ubuntu"
 read -p "Enter your choice (1 or 2): " user_choice
@@ -63,4 +78,3 @@ else
     echo "Invalid choice. Exiting script."
     exit 1
 fi
-
